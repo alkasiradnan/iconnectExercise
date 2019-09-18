@@ -7,9 +7,6 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
-	<!-- DispatcherServlet Context: defines this servlet's request-processing 
-		infrastructure -->
-
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
@@ -46,14 +43,6 @@
 			</beans:props>
 		</beans:property>
 	</beans:bean>
-	
-	<beans:bean id="destinationDAO" class="com.iconnect.demo.dao.DestinationDAOImpl">
-		<beans:property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory" />
-	</beans:bean>
-	<beans:bean id="destinationService" class="com.iconnect.demo.service.DestinationServiceImpl">
-		<beans:property name="destinationDAO" ref="destinationDAO"></beans:property>
-	</beans:bean>
-	
 
 	<context:component-scan base-package="com.iconnect.demo" />
 	

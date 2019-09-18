@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import  com.iconnect.demo.domain.Destination;
@@ -14,17 +15,15 @@ import  com.iconnect.demo.domain.Destination;
 @Repository
 public class DestinationDAOImpl implements DestinationDAO {
 	
-
+	@Autowired
 	private SessionFactory sessionFactory;
 	
-	public void setSessionFactory(SessionFactory sf){
-		this.sessionFactory = sf;
-	}
+	
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Destination> listDestinations() {
-		Session session = this.sessionFactory.getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
 		List<Destination> destinationsList = session.createQuery("from Destination").list();
 		return destinationsList;
 	}
